@@ -4,6 +4,8 @@ const refs ={
     containerHome: document.querySelector('.home_container'),
     formSearch: document.querySelector('.header__form')
 };
+
+
 function fetchFilm(KEY,params){
     fetch(`https://api.themoviedb.org/3/${params}api_key=${KEY}`)
     .then(res => {return res.json()})
@@ -12,6 +14,8 @@ function fetchFilm(KEY,params){
         console.log(data.results)
     })
 };
+console.log(data.results)
+
 const trendingParams = 'trending/movie/week?'
 fetchFilm(KEY,trendingParams);
 
@@ -39,7 +43,7 @@ fetchFilm(KEY,searchParams);
 
 refs.containerHome.addEventListener('click',onClickCardFilm)
 function onClickCardFilm(e){
-    if(e.target.nodeName === 'DIV'){
+    if (e.target.nodeName === 'DIV') {        
     console.log(e.target.dataset.id)
     const aboutParams = `movie/${e.target.dataset.id}?`
     fetchFilm(KEY,aboutParams); 
